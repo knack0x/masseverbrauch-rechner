@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: ./php/masseverbrauch-rechner/api
+      dockerfile: Dockerfile
+    container_name: masseverbrauch-api
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./php/masseverbrauch-rechner/web
+      dockerfile: Dockerfile
+    container_name: masseverbrauch-web
+    ports:
+      - "8081:80"
+    depends_on:
+      - api
+    restart: unless-stopped

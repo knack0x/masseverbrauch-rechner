@@ -79,11 +79,17 @@ test/
   - [x] HTMX integration to call Go API via PHP proxy
   - [x] Results display (dialog/modal)
   - [x] `calculate.php` — PHP proxy to Go API
+- [x] Docker setup for both services
+  - [x] `api/Dockerfile` — Go API container
+  - [x] `web/Dockerfile` — PHP + Apache container
+  - [x] `docker-compose.yml` — orchestrates both services
+- [x] Updated `AGENTS.md` with context file maintenance instructions
 
 ## What's Left
 
-- [ ] Docker setup for both services
 - [ ] Nginx config for path `knackwurstking.com/masseverbrauch-rechner/`
+- [ ] Test the complete setup (Go API + PHP frontend)
+- [ ] Deploy to Mac Studio
 
 ## Reference
 
