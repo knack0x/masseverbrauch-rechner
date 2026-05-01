@@ -9,21 +9,19 @@ Rebuild of the existing static app at https://knack0x.github.io/masseverbrauch-r
 
 ```
 test/
-├── php/
-│   └── masseverbrauch-rechner/
-│       ├── web/          # PHP frontend (HTMX + SSR)
-│       │   ├── index.php
-│       │   ├── calculate.php
-│       │   └── Dockerfile
-│       ├── api/          # Go API (stdlib)
-│       │   ├── main.go
-│       │   ├── go.mod
-│       │   └── Dockerfile
-│       └── README.md
-├── Makefile              # Build and deploy commands
-├── docker-compose.yml    # Docker orchestration
+├── web/                 # PHP frontend (HTMX + SSR)
+│   ├── index.php
+│   ├── calculate.php
+│   └── Dockerfile
+├── api/                 # Go API (stdlib)
+│   ├── main.go
+│   ├── go.mod
+│   └── Dockerfile
+├── Makefile             # Build and deploy commands
+├── docker-compose.yml   # Docker orchestration
 ├── AGENTS.md
-└── CONTEXT.md
+├── CONTEXT.md
+└── README.md
 ```
 
 ## Tech Stack

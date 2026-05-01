@@ -3,7 +3,7 @@ version: '3.8'
 services:
   api:
     build:
-      context: ./php/masseverbrauch-rechner/api
+      context: ./api
       dockerfile: Dockerfile
     container_name: masseverbrauch-api
     ports:
@@ -12,7 +12,7 @@ services:
 
   web:
     build:
-      context: ./php/masseverbrauch-rechner/web
+      context: ./web
       dockerfile: Dockerfile
     container_name: masseverbrauch-web
     ports:

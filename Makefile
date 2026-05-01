@@ -2,8 +2,8 @@
 
 # Project paths
 PROJECT_ROOT := $(shell pwd)
-API_DIR := $(PROJECT_ROOT)/php/masseverbrauch-rechner/api
-WEB_DIR := $(PROJECT_ROOT)/php/masseverbrauch-rechner/web
+API_DIR := $(PROJECT_ROOT)/api
+WEB_DIR := $(PROJECT_ROOT)/web
 
 help:
 	@echo "Masseverbrauch-Rechner - Available commands:"
