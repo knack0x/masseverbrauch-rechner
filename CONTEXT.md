@@ -99,6 +99,7 @@ test/
 
 - [x] Nginx config for path `knackwurstking.com/masseverbrauch-rechner/`
 - [x] Create Makefile for build/install commands
+- [x] Create project root README.md with Makefile documentation
 - [ ] Test the complete setup (Go API + PHP frontend)
 - [ ] Deploy to Mac Studio
 
