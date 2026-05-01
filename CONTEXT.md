@@ -12,7 +12,17 @@ test/
 ├── php/
 │   └── masseverbrauch-rechner/
 │       ├── web/          # PHP frontend (HTMX + SSR)
-│       └── api/          # Go API (stdlib)
+│       │   ├── index.php
+│       │   ├── calculate.php
+│       │   └── Dockerfile
+│       ├── api/          # Go API (stdlib)
+│       │   ├── main.go
+│       │   ├── go.mod
+│       │   └── Dockerfile
+│       └── README.md
+├── Makefile              # Build and deploy commands
+├── docker-compose.yml    # Docker orchestration
+├── AGENTS.md
 └── CONTEXT.md
 ```
 
@@ -87,7 +97,8 @@ test/
 
 ## What's Left
 
-- [ ] Nginx config for path `knackwurstking.com/masseverbrauch-rechner/`
+- [x] Nginx config for path `knackwurstking.com/masseverbrauch-rechner/`
+- [x] Create Makefile for build/install commands
 - [ ] Test the complete setup (Go API + PHP frontend)
 - [ ] Deploy to Mac Studio
 
