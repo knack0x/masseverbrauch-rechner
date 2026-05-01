@@ -39,3 +39,16 @@ Update `CONTEXT.md` after:
 ## Project Root
 
 Always use `/Users/knackwurstking/Git/knack0x/test` as the working directory.
+
+## Project Structure
+
+```
+test/
+├── web/                 # PHP frontend (HTMX + SSR)
+├── api/                 # Go API (stdlib)
+├── Makefile
+├── docker-compose.yml
+├── AGENTS.md
+├── CONTEXT.md
+└── README.md
+```

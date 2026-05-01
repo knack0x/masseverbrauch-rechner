@@ -79,8 +79,8 @@ test/
 
 ## What's Done
 
-- [x] Beautified `php/masseverbrauch-rechner/README.md`
 - [x] Created `CONTEXT.md`
+- [x] Created `AGENTS.md` with context file maintenance instructions
 - [x] Created Go API (`api/` dir) with `/api/calculate` endpoint
 - [x] Created PHP frontend (`web/` dir) with:
   - [x] `index.php` — main page with form (mobile-first styling)
@@ -91,7 +91,9 @@ test/
   - [x] `api/Dockerfile` — Go API container
   - [x] `web/Dockerfile` — PHP + Apache container
   - [x] `docker-compose.yml` — orchestrates both services
-- [x] Updated `AGENTS.md` with context file maintenance instructions
+- [x] Created `Makefile` for build/install commands
+- [x] Created project root `README.md` with Makefile documentation
+- [x] Restructured project: moved `web/` and `api/` to root, removed `php/` directory
 
 ## What's Left
 
