@@ -112,6 +112,11 @@
             padding: 1.5rem;
             max-width: 500px;
             width: 90%;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
         }
 
         dialog::backdrop {

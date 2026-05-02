@@ -37,7 +37,7 @@ test/
 - **Flakes (per slot)** = weight before − weight after
 - **Percentages** = each mass / total mass × 100
 - Total = 100% of all masses combined
-- Max 5 flakes slots ("Tower Slot 1" through "Tower Slot 5")
+- Max 5 flakes slots ("Turmposition 1" through "Turmposition 5" in UI, "Tower Slot 1" through "Tower Slot 5" in API)
 
 ## Input Fields
 
@@ -70,7 +70,7 @@ test/
   "hauptmasse_kg": 900.0,
   "hauptmasse_percent": 88.67,
   "slots": [
-    {"name": "Tower Slot 1", "kg": 15.0, "percent": 1.48},
+    {"name": "Tower Slot 1", "kg": 15.0, "percent": 1.48},  (translated to "Turmposition 1" in UI)
     ...
   ],
   "total_kg": 1015.0
@@ -85,8 +85,9 @@ test/
 - [x] Created PHP frontend (`web/` dir) with:
   - [x] `index.php` — main page with form (mobile-first styling)
   - [x] HTMX integration to call Go API via PHP proxy
-  - [x] Results display (dialog/modal)
+  - [x] Results display (dialog/modal, centered on screen)
   - [x] `calculate.php` — PHP proxy to Go API
+  - [x] German translations for slot names (Turmposition 1-5)
 - [x] Docker setup for both services
   - [x] `api/Dockerfile` — Go API container
   - [x] `web/Dockerfile` — PHP + Apache container

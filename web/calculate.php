@@ -39,10 +39,9 @@ if ($httpCode !== 200) {
 $result = json_decode($response, true);
 ?>
 
-<dialog id="results-dialog" open>
+<dialog id="results-dialog">
 	<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
 		<h2 style="margin: 0;">Verbrauch</h2>
-		<button onclick="this.closest('dialog').close()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
 	</div>
 
 	<div class="result-row">
