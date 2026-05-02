@@ -6,10 +6,11 @@ Rebuild of the existing static app with PHP + Go API architecture.
 ## Project Structure
 
 ```
-test/
+masseverbrauch-rechner/
 ├── web/                 # PHP frontend (HTMX + SSR)
 │   ├── index.php
 │   ├── calculate.php
+│   ├── cache.php
 │   └── Dockerfile
 ├── api/                 # Go API (stdlib)
 │   ├── main.go
@@ -27,6 +28,8 @@ test/
 ### Prerequisites
 - Docker & Docker Compose
 - GNU Make
+- Go 1.21+ (for local dev)
+- PHP 8.2+ (for local dev)
 
 ### Build & Run
 
@@ -40,6 +43,18 @@ make up
 # API: http://localhost:50570
 # Web: http://localhost:50571
 ```
+
+### Local Development (without Docker)
+
+```bash
+# Start Go API locally (port 8080)
+make dev-api
+
+# Start PHP web locally (port 50571)
+make dev-web
+```
+
+The web frontend uses `API_URL` environment variable to connect to the API. In Docker, it's set automatically. For local dev, `make dev-web` sets it to `http://localhost:8080/api/calculate`.
 
 ### Makefile Targets
 

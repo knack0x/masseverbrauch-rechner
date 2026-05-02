@@ -38,14 +38,21 @@ Update `CONTEXT.md` after:
 
 ## Project Root
 
-Always use `/Users/knackwurstking/Git/knack0x/test` as the working directory.
+Always use `/Users/knackwurstking/Git/knack0x/masseverbrauch-rechner` as the working directory.
 
 ## Project Structure
 
 ```
-test/
+masseverbrauch-rechner/
 ├── web/                 # PHP frontend (HTMX + SSR)
+│   ├── index.php
+│   ├── calculate.php
+│   ├── cache.php
+│   └── Dockerfile
 ├── api/                 # Go API (stdlib)
+│   ├── main.go
+│   ├── go.mod
+│   └── Dockerfile
 ├── Makefile
 ├── docker-compose.yml
 ├── AGENTS.md

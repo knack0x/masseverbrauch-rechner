@@ -114,7 +114,7 @@ test/
 
 ## What's Left
 
-- [ ] Test the complete setup (Go API + PHP frontend)
+- [x] Test the complete setup (Go API + PHP frontend) - Verified working 2026-05-02
 - [ ] Deploy to Mac Studio
 
 ## Reference
