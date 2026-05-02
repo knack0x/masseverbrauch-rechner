@@ -30,7 +30,6 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 
 $response = curl_exec($ch);
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-curl_close($ch);
 
 if ($httpCode !== 200) {
     echo '<div style="color: red; padding: 1rem;">Fehler bei der Berechnung</div>';
