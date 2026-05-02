@@ -159,11 +159,11 @@
                 <input type="number" id="main-runtime" name="runtime_minutes" step="0.01" min="0" required>
             </div>
 
-            <h2>Flakes - Tower Slots</h2>
+            <h2>Flakes - Turmpositionen</h2>
 
             <?php for ($i = 1; $i <= 5; $i++): ?>
             <div class="form-group">
-                <label>Tower Slot <?php echo $i; ?></label>
+                <label>Turmposition <?php echo $i; ?></label>
                 <div class="slot-grid">
                     <div>
                         <label for="tower-slot-<?php echo $i; ?>-before">KG vor</label>
