@@ -108,6 +108,7 @@ test/
 - [x] Updated README.md and Makefile (dev-web) to reflect new ports
 - [x] Fixed Makefile to force rebuild on `make up` (added --build flag)
 - [x] Fixed Makefile build-web target to use --no-cache to avoid Docker layer caching
+- [x] Fixed calculate.php API URL to use Docker service name (api:8080) instead of localhost
 
 ## What's Left
 
