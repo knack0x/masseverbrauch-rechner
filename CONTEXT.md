@@ -96,6 +96,7 @@ test/
 - [x] Added local development targets (dev-api, dev-web) to Makefile
 - [x] Created project root `README.md` with Makefile documentation
 - [x] Restructured project: moved `web/` and `api/` to root, removed `php/` directory
+- [x] Added basic request logging to Go API (incoming requests, request data, calculation results)
 
 ## What's Left
 

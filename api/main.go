@@ -32,16 +32,21 @@ type SlotResult struct {
 }
 
 func calculateHandler(w http.ResponseWriter, r *http.Request) {
+	log.Printf("Incoming request: %s %s from %s", r.Method, r.URL.Path, r.RemoteAddr)
+
 	if r.Method != http.MethodPost {
+		log.Printf("Method not allowed: %s", r.Method)
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
 	var req CalculateRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		log.Printf("Invalid request body: %v", err)
 		http.Error(w, "Invalid request", http.StatusBadRequest)
 		return
 	}
+	log.Printf("Request data: flow=%.2f, runtime=%.2fmin, slots=%d", req.Flow, req.RuntimeMinutes, len(req.Slots))
 
 	hauptmasseKG := req.Flow * (req.RuntimeMinutes * 60)
 	totalKG := hauptmasseKG
@@ -71,6 +76,7 @@ func calculateHandler(w http.ResponseWriter, r *http.Request) {
 		TotalKG:          totalKG,
 	}
 
+	log.Printf("Calculation complete: total=%.2fkg, hauptmasse=%.2fkg (%.1f%%)", totalKG, hauptmasseKG, hauptmassePercent)
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(resp)
 }
