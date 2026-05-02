@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: masseverbrauch-api
     ports:
-      - "8080:8080"
+      - "50570:8080"
     restart: unless-stopped
 
   web:
@@ -16,7 +16,7 @@ services:
       dockerfile: Dockerfile
     container_name: masseverbrauch-web
     ports:
-      - "8081:80"
+      - "50571:80"
     depends_on:
       - api
     restart: unless-stopped

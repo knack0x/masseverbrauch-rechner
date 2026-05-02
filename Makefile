@@ -35,8 +35,8 @@ build-web:
 up:
 	@echo "Starting services..."
 	docker-compose up -d
-	@echo "API running at http://localhost:8080"
-	@echo "Web running at http://localhost:8081"
+	@echo "API running at http://localhost:50570"
+	@echo "Web running at http://localhost:50571"
 
 down:
 	@echo "Stopping services..."
@@ -44,7 +44,7 @@ down:
 
 test:
 	@echo "Testing API..."
-	curl -X POST http://localhost:8080/api/calculate \
+	curl -X POST http://localhost:50570/api/calculate \
 		-H "Content-Type: application/json" \
 		-d '{"flow":1.5,"runtime_minutes":10,"slots":[{"before":100,"after":85},{"before":50,"after":42}]}' \
 		| python3 -m json.tool || cat
@@ -53,7 +53,7 @@ test-web: up
 	@echo "Waiting for services to start..."
 	@sleep 3
 	@echo "Testing full stack..."
-	@curl -s http://localhost:8081 | head -20
+	@curl -s http://localhost:50571 | head -20
 
 logs:
 	docker-compose logs -f

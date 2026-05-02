@@ -102,6 +102,7 @@ test/
 - [x] Nginx config for path `knackwurstking.com/masseverbrauch-rechner/`
 - [x] Added reusable cache mechanism (cache.php) with ETag support to index.php and calculate.php
 - [x] Fixed web/Dockerfile COPY instruction (build context already in web/, changed `COPY web/` to `COPY .`)
+- [x] Changed exposed ports to avoid conflicts: API 50570:8080, Web 50571:80
 
 ## What's Left
 
