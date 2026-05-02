@@ -11,7 +11,7 @@ import (
 var version = "dev"
 
 func init() {
-	if data, err := os.ReadFile("../VERSION"); err == nil {
+	if data, err := os.ReadFile("VERSION"); err == nil {
 		version = string(data)
 	}
 }
