@@ -109,6 +109,7 @@ test/
 - [x] Fixed Makefile to force rebuild on `make up` (added --build flag)
 - [x] Fixed Makefile build-web target to use --no-cache to avoid Docker layer caching
 - [x] Fixed calculate.php API URL to use Docker service name (api:8080) instead of localhost
+- [x] Added API_URL environment variable to support both Docker and local dev environments
 
 ## What's Left
 

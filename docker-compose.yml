@@ -19,4 +19,6 @@ services:
       - "50571:80"
     depends_on:
       - api
+    environment:
+      - API_URL=http://api:8080/api/calculate
     restart: unless-stopped
