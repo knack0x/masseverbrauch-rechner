@@ -8,10 +8,11 @@ Rebuild of the existing static app at https://knack0x.github.io/masseverbrauch-r
 ## Project Structure
 
 ```
-test/
+masseverbrauch-rechner/
 ├── web/                 # PHP frontend (HTMX + SSR)
 │   ├── index.php
 │   ├── calculate.php
+│   ├── version.php
 │   ├── cache.php
 │   └── Dockerfile
 ├── api/                 # Go API (stdlib)
@@ -20,6 +21,8 @@ test/
 │   └── Dockerfile
 ├── Makefile             # Build and deploy commands
 ├── docker-compose.yml   # Docker orchestration
+├── VERSION              # Version file (1.0.0)
+├── CHANGELOG.md         # Version history
 ├── AGENTS.md
 ├── CONTEXT.md
 └── README.md

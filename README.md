@@ -10,6 +10,7 @@ masseverbrauch-rechner/
 ├── web/                 # PHP frontend (HTMX + SSR)
 │   ├── index.php
 │   ├── calculate.php
+│   ├── version.php
 │   ├── cache.php
 │   └── Dockerfile
 ├── api/                 # Go API (stdlib)
@@ -18,6 +19,8 @@ masseverbrauch-rechner/
 │   └── Dockerfile
 ├── Makefile             # Build and deploy commands
 ├── docker-compose.yml   # Docker orchestration
+├── VERSION              # Version file
+├── CHANGELOG.md         # Version history
 ├── AGENTS.md
 ├── CONTEXT.md
 └── README.md
@@ -113,3 +116,7 @@ Response:
 - **Frontend**: PHP 8.2 + HTMX + HTML/CSS (mobile-first)
 - **Backend API**: Go 1.21 (standard library)
 - **Deployment**: Docker + Docker Compose
+
+## Version
+
+Current version: **1.0.0** (see [CHANGELOG.md](CHANGELOG.md) for details)

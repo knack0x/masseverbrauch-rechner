@@ -47,6 +47,7 @@ masseverbrauch-rechner/
 ├── web/                 # PHP frontend (HTMX + SSR)
 │   ├── index.php
 │   ├── calculate.php
+│   ├── version.php
 │   ├── cache.php
 │   └── Dockerfile
 ├── api/                 # Go API (stdlib)
@@ -55,6 +56,8 @@ masseverbrauch-rechner/
 │   └── Dockerfile
 ├── Makefile
 ├── docker-compose.yml
+├── VERSION              # Version file
+├── CHANGELOG.md         # Version history
 ├── AGENTS.md
 ├── CONTEXT.md
 └── README.md
