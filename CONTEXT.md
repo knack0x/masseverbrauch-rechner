@@ -34,7 +34,7 @@ test/
 ## Calculation Logic
 
 - **Hauptmasse** = flow (kg/s) × runtime (seconds)
-- **Flakes (per slot)** = weight before − weight after
+- **Flakes (per slot)** = weight after − weight before
 - **Percentages** = each mass / total mass × 100
 - Total = 100% of all masses combined
 - Max 5 flakes slots ("Turmposition 1" through "Turmposition 5" in UI, "Tower Slot 1" through "Tower Slot 5" in API)
