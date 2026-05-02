@@ -14,6 +14,7 @@ func init() {
 	if data, err := os.ReadFile("VERSION"); err == nil {
 		version = string(data)
 	}
+	log.Printf("Version: %s", version)
 }
 
 type CalculateRequest struct {

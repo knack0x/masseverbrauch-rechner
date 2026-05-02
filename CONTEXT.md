@@ -118,6 +118,7 @@ test/
 - [x] Fixed VERSION file paths in both API and web UI to use correct relative paths
 - [x] Added version.php proxy to fetch API version through PHP (fixes browser CORS issue)
 - [x] Removed deprecated curl_close() from version.php
+- [x] Fixed VERSION file reading to suppress warnings in dev mode (check file_exists first)
 
 ## What's Left
 

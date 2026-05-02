@@ -156,7 +156,7 @@ set_cache_headers(__FILE__);
 	<div class="container">
 		<h1>Masseverbrauch Rechner</h1>
 		<div style="text-align: right; font-size: 0.8rem; color: #999;">
-			Web: <?php echo rtrim(file_get_contents(__DIR__ . '/VERSION') ?: 'dev'); ?>
+			Web: <?php echo file_exists(__DIR__ . '/VERSION') ? rtrim(file_get_contents(__DIR__ . '/VERSION')) : 'dev'; ?>
 			(API: <span id="api-version">...</span>)
 		</div>
 
