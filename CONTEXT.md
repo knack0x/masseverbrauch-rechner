@@ -113,6 +113,8 @@ test/
 - [x] Fixed local dev API URL to use port 8080 (Go default) instead of Docker-mapped port 50570
 - [x] Added VERSION file (1.0.0) and version endpoints to API (/api/version) and web UI
 - [x] Updated Dockerfiles to copy VERSION file into containers
+- [x] Fixed Docker build context to use project root so VERSION file is accessible
+- [x] Updated docker-compose.yml and Makefile to use project root as build context
 
 ## What's Left
 

@@ -26,11 +26,11 @@ build: build-api build-web
 
 build-api:
 	@echo "Building Go API..."
-	cd $(API_DIR) && docker build -t masseverbrauch-api .
+	docker build -t masseverbrauch-api -f $(API_DIR)/Dockerfile .
 
 build-web:
 	@echo "Building PHP Web..."
-	cd $(WEB_DIR) && docker build --no-cache -t masseverbrauch-web .
+	docker build --no-cache -t masseverbrauch-web -f $(WEB_DIR)/Dockerfile .
 
 up:
 	@echo "Starting services..."
@@ -73,6 +73,7 @@ deploy:
 	fi
 	ssh $(DEPLOY_HOST) "mkdir -p ~/masseverbrauch-rechner"
 	scp -r $(PROJECT_ROOT)/docker-compose.yml $(DEPLOY_HOST):~/masseverbrauch-rechner/
+	scp -r $(PROJECT_ROOT)/VERSION $(DEPLOY_HOST):~/masseverbrauch-rechner/
 	scp -r $(API_DIR) $(DEPLOY_HOST):~/masseverbrauch-rechner/
 	scp -r $(WEB_DIR) $(DEPLOY_HOST):~/masseverbrauch-rechner/
 	ssh $(DEPLOY_HOST) "cd ~/masseverbrauch-rechner && docker-compose down && docker-compose up -d"

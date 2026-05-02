@@ -1,7 +1,7 @@
 FROM golang:1.21-alpine AS builder
 WORKDIR /app
-COPY . .
-COPY ../VERSION .
+COPY api/ .
+COPY VERSION .
 RUN go build -o api main.go
 
 FROM alpine:latest

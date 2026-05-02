@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN a2enmod rewrite
 
-COPY . /var/www/html/
-COPY ../VERSION /var/www/html/VERSION
+COPY web/ /var/www/html/
+COPY VERSION /var/www/html/VERSION
 
 EXPOSE 80
