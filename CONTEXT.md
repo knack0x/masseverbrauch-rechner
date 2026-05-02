@@ -101,6 +101,7 @@ test/
 - [x] Fixed slot calculation bug in Go API (inverted before/after subtraction causing zero results)
 - [x] Nginx config for path `knackwurstking.com/masseverbrauch-rechner/`
 - [x] Added reusable cache mechanism (cache.php) with ETag support to index.php and calculate.php
+- [x] Fixed web/Dockerfile COPY instruction (build context already in web/, changed `COPY web/` to `COPY .`)
 
 ## What's Left
 
