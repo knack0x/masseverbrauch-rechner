@@ -53,7 +53,7 @@ func calculateHandler(w http.ResponseWriter, r *http.Request) {
 
 	var results []SlotResult
 	for i, slot := range req.Slots {
-		kg := slot.Before - slot.After
+		kg := slot.After - slot.Before
 		if kg < 0 {
 			kg = 0
 		}

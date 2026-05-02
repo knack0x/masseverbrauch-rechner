@@ -97,6 +97,7 @@ test/
 - [x] Created project root `README.md` with Makefile documentation
 - [x] Restructured project: moved `web/` and `api/` to root, removed `php/` directory
 - [x] Added basic request logging to Go API (incoming requests, request data, calculation results)
+- [x] Fixed slot calculation bug in Go API (inverted before/after subtraction causing zero results)
 
 ## What's Left
 
