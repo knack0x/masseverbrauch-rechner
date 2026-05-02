@@ -86,7 +86,7 @@ dev-api:
 # For local PHP development (without Docker)
 dev-web:
 	@echo "Running PHP web locally..."
-	cd $(WEB_DIR) && php -S localhost:8081
+	cd $(WEB_DIR) && php -S localhost:50571
 
 # Quick restart
 restart: down up

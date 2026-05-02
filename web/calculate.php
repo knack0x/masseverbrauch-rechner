@@ -5,7 +5,7 @@ set_cache_headers(__FILE__);
 ?>
 
 <?php
-$apiUrl = 'http://localhost:8080/api/calculate';
+$apiUrl = 'http://localhost:50570/api/calculate';
 
 // Read POST data
 $flow = floatval($_POST['flow'] ?? 0);
@@ -38,7 +38,16 @@ $response = curl_exec($ch);
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
 if ($httpCode !== 200) {
-	echo '<div style="color: red; padding: 1rem;">Fehler bei der Berechnung</div>';
+	$statusText = match($httpCode) {
+		400 => 'Bad Request',
+		404 => 'Not Found',
+		405 => 'Method Not Allowed',
+		500 => 'Internal Server Error',
+		502 => 'Bad Gateway',
+		503 => 'Service Unavailable',
+		default => 'HTTP Fehler'
+	};
+	echo '<div style="color: red; padding: 1rem;">Fehler bei der Berechnung: ' . $httpCode . ' ' . $statusText . '</div>';
 	exit;
 }
 

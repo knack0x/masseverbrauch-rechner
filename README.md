@@ -37,8 +37,8 @@ make build
 # Start all services
 make up
 
-# API: http://localhost:8080
-# Web: http://localhost:8081
+# API: http://localhost:50570
+# Web: http://localhost:50571
 ```
 
 ### Makefile Targets

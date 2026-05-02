@@ -103,6 +103,9 @@ test/
 - [x] Added reusable cache mechanism (cache.php) with ETag support to index.php and calculate.php
 - [x] Fixed web/Dockerfile COPY instruction (build context already in web/, changed `COPY web/` to `COPY .`)
 - [x] Changed exposed ports to avoid conflicts: API 50570:8080, Web 50571:80
+- [x] Updated calculate.php error handling to show HTTP status code and message
+- [x] Fixed API URL in calculate.php to use port 50570
+- [x] Updated README.md and Makefile (dev-web) to reflect new ports
 
 ## What's Left
 
