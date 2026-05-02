@@ -116,6 +116,7 @@ test/
 - [x] Fixed Docker build context to use project root so VERSION file is accessible
 - [x] Updated docker-compose.yml and Makefile to use project root as build context
 - [x] Fixed VERSION file paths in both API and web UI to use correct relative paths
+- [x] Added version.php proxy to fetch API version through PHP (fixes browser CORS issue)
 
 ## What's Left
 

@@ -206,8 +206,7 @@ set_cache_headers(__FILE__);
 
 	<script>
 		(function() {
-			const apiBase = ('<?php echo getenv("API_URL") ?: "http://localhost:8080/api/calculate"; ?>').replace('/api/calculate', '');
-			fetch(apiBase + '/api/version')
+			fetch('version.php')
 				.then(r => r.json())
 				.then(d => document.getElementById('api-version').textContent = d.version)
 				.catch(() => document.getElementById('api-version').textContent = 'n/a');
