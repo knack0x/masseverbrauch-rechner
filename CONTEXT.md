@@ -110,6 +110,7 @@ test/
 - [x] Fixed Makefile build-web target to use --no-cache to avoid Docker layer caching
 - [x] Fixed calculate.php API URL to use Docker service name (api:8080) instead of localhost
 - [x] Added API_URL environment variable to support both Docker and local dev environments
+- [x] Fixed local dev API URL to use port 8080 (Go default) instead of Docker-mapped port 50570
 
 ## What's Left
 

@@ -5,7 +5,7 @@ set_cache_headers(__FILE__);
 ?>
 
 <?php
-$apiUrl = getenv('API_URL') ?: 'http://localhost:50570/api/calculate';
+$apiUrl = getenv('API_URL') ?: 'http://localhost:8080/api/calculate';
 
 // Read POST data
 $flow = floatval($_POST['flow'] ?? 0);

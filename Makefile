@@ -86,7 +86,7 @@ dev-api:
 # For local PHP development (without Docker)
 dev-web:
 	@echo "Running PHP web locally..."
-	cd $(WEB_DIR) && API_URL=http://localhost:50570/api/calculate php -S localhost:50571
+	cd $(WEB_DIR) && API_URL=http://localhost:8080/api/calculate php -S localhost:50571
 
 # Quick restart
 restart: down up
