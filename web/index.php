@@ -155,6 +155,10 @@ set_cache_headers(__FILE__);
 <body>
 	<div class="container">
 		<h1>Masseverbrauch Rechner</h1>
+		<div style="text-align: right; font-size: 0.8rem; color: #999;">
+			Web: <?php echo rtrim(file_get_contents(__DIR__ . '/../VERSION') ?: 'dev'); ?>
+			(API: <span id="api-version">...</span>)
+		</div>
 
 		<form hx-post="calculate.php"
 			hx-target="#results"
@@ -199,6 +203,16 @@ set_cache_headers(__FILE__);
 
 		<div id="results"></div>
 	</div>
+
+	<script>
+		(function() {
+			const apiBase = ('<?php echo getenv("API_URL") ?: "http://localhost:8080/api/calculate"; ?>').replace('/api/calculate', '');
+			fetch(apiBase + '/api/version')
+				.then(r => r.json())
+				.then(d => document.getElementById('api-version').textContent = d.version)
+				.catch(() => document.getElementById('api-version').textContent = 'n/a');
+		})();
+	</script>
 </body>
 
 </html>

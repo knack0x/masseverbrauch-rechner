@@ -4,8 +4,17 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 )
+
+var version = "dev"
+
+func init() {
+	if data, err := os.ReadFile("../VERSION"); err == nil {
+		version = string(data)
+	}
+}
 
 type CalculateRequest struct {
 	Flow           float64 `json:"flow"`
@@ -81,8 +90,14 @@ func calculateHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(resp)
 }
 
+func versionHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]string{"version": version})
+}
+
 func main() {
 	http.HandleFunc("/api/calculate", calculateHandler)
-	log.Println("API server starting on :8080")
+	http.HandleFunc("/api/version", versionHandler)
+	log.Printf("API server starting on :8080 (version: %s)", version)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

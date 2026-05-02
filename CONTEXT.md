@@ -111,6 +111,8 @@ test/
 - [x] Fixed calculate.php API URL to use Docker service name (api:8080) instead of localhost
 - [x] Added API_URL environment variable to support both Docker and local dev environments
 - [x] Fixed local dev API URL to use port 8080 (Go default) instead of Docker-mapped port 50570
+- [x] Added VERSION file (1.0.0) and version endpoints to API (/api/version) and web UI
+- [x] Updated Dockerfiles to copy VERSION file into containers
 
 ## What's Left
 
