@@ -30,11 +30,11 @@ build-api:
 
 build-web:
 	@echo "Building PHP Web..."
-	cd $(WEB_DIR) && docker build -t masseverbrauch-web .
+	cd $(WEB_DIR) && docker build --no-cache -t masseverbrauch-web .
 
 up:
 	@echo "Starting services..."
-	docker-compose up -d
+	docker-compose up -d --build
 	@echo "API running at http://localhost:50570"
 	@echo "Web running at http://localhost:50571"
 

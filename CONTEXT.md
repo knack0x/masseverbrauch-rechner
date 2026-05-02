@@ -106,6 +106,8 @@ test/
 - [x] Updated calculate.php error handling to show HTTP status code and message
 - [x] Fixed API URL in calculate.php to use port 50570
 - [x] Updated README.md and Makefile (dev-web) to reflect new ports
+- [x] Fixed Makefile to force rebuild on `make up` (added --build flag)
+- [x] Fixed Makefile build-web target to use --no-cache to avoid Docker layer caching
 
 ## What's Left
 
