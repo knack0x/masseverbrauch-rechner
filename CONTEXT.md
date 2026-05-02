@@ -12,6 +12,7 @@ test/
 ├── web/                 # PHP frontend (HTMX + SSR)
 │   ├── index.php
 │   ├── calculate.php
+│   ├── cache.php
 │   └── Dockerfile
 ├── api/                 # Go API (stdlib)
 │   ├── main.go
@@ -98,12 +99,11 @@ test/
 - [x] Restructured project: moved `web/` and `api/` to root, removed `php/` directory
 - [x] Added basic request logging to Go API (incoming requests, request data, calculation results)
 - [x] Fixed slot calculation bug in Go API (inverted before/after subtraction causing zero results)
+- [x] Nginx config for path `knackwurstking.com/masseverbrauch-rechner/`
+- [x] Added reusable cache mechanism (cache.php) with ETag support to index.php and calculate.php
 
 ## What's Left
 
-- [x] Nginx config for path `knackwurstking.com/masseverbrauch-rechner/`
-- [x] Create Makefile for build/install commands
-- [x] Create project root README.md with Makefile documentation
 - [ ] Test the complete setup (Go API + PHP frontend)
 - [ ] Deploy to Mac Studio
 

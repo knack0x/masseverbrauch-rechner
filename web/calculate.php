@@ -1,4 +1,10 @@
 <?php
+# Cache Control
+require_once __DIR__ . "/cache.php";
+set_cache_headers(__FILE__);
+?>
+
+<?php
 $apiUrl = 'http://localhost:8080/api/calculate';
 
 // Read POST data
