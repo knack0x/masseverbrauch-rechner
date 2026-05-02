@@ -1,4 +1,4 @@
-.PHONY: help build build-api build-web up down test clean logs deploy
+.PHONY: help build build-api build-web up down test clean logs deploy dev-api dev-web
 
 # Project paths
 PROJECT_ROOT := $(shell pwd)
@@ -18,6 +18,8 @@ help:
 	@echo "  logs        - View logs from all services"
 	@echo "  clean       - Remove containers and images"
 	@echo "  deploy      - Deploy to Mac Studio"
+	@echo "  dev-api     - Run Go API locally (without Docker)"
+	@echo "  dev-web     - Run PHP web locally (without Docker)"
 	@echo ""
 
 build: build-api build-web
@@ -80,6 +82,11 @@ deploy:
 dev-api:
 	@echo "Running API locally..."
 	cd $(API_DIR) && go run main.go
+
+# For local PHP development (without Docker)
+dev-web:
+	@echo "Running PHP web locally..."
+	cd $(WEB_DIR) && php -S localhost:8081
 
 # Quick restart
 restart: down up

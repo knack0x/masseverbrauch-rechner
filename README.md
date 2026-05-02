@@ -57,6 +57,7 @@ make up
 | `make clean` | Remove containers and images |
 | `make deploy` | Deploy to Mac Studio (requires DEPLOY_HOST) |
 | `make dev-api` | Run Go API locally without Docker |
+| `make dev-web` | Run PHP web locally without Docker |
 | `make restart` | Restart all services |
 
 ### Deploy to Mac Studio

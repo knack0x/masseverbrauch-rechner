@@ -92,6 +92,7 @@ test/
   - [x] `web/Dockerfile` — PHP + Apache container
   - [x] `docker-compose.yml` — orchestrates both services
 - [x] Created `Makefile` for build/install commands
+- [x] Added local development targets (dev-api, dev-web) to Makefile
 - [x] Created project root `README.md` with Makefile documentation
 - [x] Restructured project: moved `web/` and `api/` to root, removed `php/` directory
 
