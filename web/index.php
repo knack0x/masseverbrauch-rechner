@@ -9,6 +9,13 @@ set_cache_headers(__FILE__);
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="manifest" href="manifest.json">
+	<link rel="apple-touch-icon" href="assets/icons/icon-180x180.png">
+	<link rel="icon" sizes="48x48" href="assets/icons/icon-48x48.png">
+	<link rel="icon" sizes="192x192" href="assets/icons/icon-192x192.png">
+	<meta name="theme-color" content="#007bff">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<title>Masseverbrauch Rechner</title>
 	<script src="https://unpkg.com/htmx.org@1.9.10"></script>
 	<style>

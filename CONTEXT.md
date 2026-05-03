@@ -14,7 +14,10 @@ masseverbrauch-rechner/
 │   ├── calculate.php
 │   ├── version.php
 │   ├── cache.php
-│   └── Dockerfile
+│   ├── manifest.json
+│   ├── Dockerfile
+│   └── assets/
+│       └── icons/      # PWA icons (48-1000px)
 ├── api/                 # Go API (stdlib)
 │   ├── main.go
 │   ├── go.mod
@@ -122,13 +125,14 @@ masseverbrauch-rechner/
 - [x] Added version.php proxy to fetch API version through PHP (fixes browser CORS issue)
 - [x] Removed deprecated curl_close() from version.php
 - [x] Fixed VERSION file reading to suppress warnings in dev mode (check file_exists first)
+- [x] Added PWA icon images (48x48 to 1000x1000) to web/assets/icons/
+- [x] Created manifest.json for PWA installation
+- [x] Updated index.php with PWA meta tags, apple-touch-icon, and manifest link
 
 ## What's Left
 
 - [x] Test the complete setup (Go API + PHP frontend) - Verified working 2026-05-02
 - [x] Deploy to Mac Studio
-- [ ] Add icon images to web/ for Android and iOS support
-- [ ] Add manifest.json for PWA installation (no service worker, caching only)
 
 ## Reference
 
