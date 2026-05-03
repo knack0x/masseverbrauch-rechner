@@ -119,4 +119,4 @@ Response:
 
 ## Version
 
-Current version: **1.0.0** (see [CHANGELOG.md](CHANGELOG.md) for details)
+Current version: **1.1.0** (see [CHANGELOG.md](CHANGELOG.md) for details)

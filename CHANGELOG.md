@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0] - 2026-05-03
+
+### Added
+- PWA (Progressive Web App) support with manifest.json
+- PWA icon images (48x48 to 1000x1000) in web/assets/icons/
+- PWA meta tags in index.php (apple-touch-icon, manifest link)
+- Web app manifest for installability and offline capability
+
 ## [1.0.0] - 2026-05-02
 
 ### Added

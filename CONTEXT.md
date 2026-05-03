@@ -24,7 +24,7 @@ masseverbrauch-rechner/
 │   └── Dockerfile
 ├── Makefile             # Build and deploy commands
 ├── docker-compose.yml   # Docker orchestration
-├── VERSION              # Version file (1.0.0)
+├── VERSION              # Version file (1.1.0)
 ├── CHANGELOG.md         # Version history
 ├── AGENTS.md
 ├── CONTEXT.md
@@ -117,7 +117,7 @@ masseverbrauch-rechner/
 - [x] Fixed calculate.php API URL to use Docker service name (api:8080) instead of localhost
 - [x] Added API_URL environment variable to support both Docker and local dev environments
 - [x] Fixed local dev API URL to use port 8080 (Go default) instead of Docker-mapped port 50570
-- [x] Added VERSION file (1.0.0) and version endpoints to API (/api/version) and web UI
+- [x] Added VERSION file (1.0.0 → 1.1.0) and version endpoints to API (/api/version) and web UI
 - [x] Updated Dockerfiles to copy VERSION file into containers
 - [x] Fixed Docker build context to use project root so VERSION file is accessible
 - [x] Updated docker-compose.yml and Makefile to use project root as build context
