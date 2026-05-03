@@ -126,7 +126,9 @@ masseverbrauch-rechner/
 ## What's Left
 
 - [x] Test the complete setup (Go API + PHP frontend) - Verified working 2026-05-02
-- [ ] Deploy to Mac Studio
+- [x] Deploy to Mac Studio
+- [ ] Add icon images to web/ for Android and iOS support
+- [ ] Add manifest.json for PWA installation (no service worker, caching only)
 
 ## Reference
 
