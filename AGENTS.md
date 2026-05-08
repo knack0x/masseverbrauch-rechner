@@ -40,6 +40,16 @@ Update `CONTEXT.md` after:
 
 Always use `/Users/knackwurstking/Git/knack0x/masseverbrauch-rechner` as the working directory.
 
+## URL Conventions
+
+The app is deployed behind an nginx reverse proxy at `https://knackwurstking.com/masseverbrauch-rechner/`. All URLs in templates and scripts MUST be relative (not starting with `/`) so they resolve correctly both at root during local dev and behind the subpath in production.
+
+✅ `hx-post="calculate"` — resolves to `/calculate` at root or `/masseverbrauch-rechner/calculate` behind proxy
+❌ `hx-post="/calculate"` — breaks behind proxy (points to domain root)
+
+✅ `fetch('api/version')` — resolves correctly regardless of base path
+❌ `fetch('/api/version')` — breaks behind proxy
+
 ## Project Structure
 
 ```

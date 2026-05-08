@@ -109,6 +109,7 @@ masseverbrauch-rechner/
   - [x] HTMX integration, version proxy, static assets serving
   - [x] Form inputs sync to URL query params via `history.replaceState` for reload persistence
   - [x] Fixed slot index bug: send all 5 slots to API instead of skipping empty ones
+  - [x] Fixed absolute paths for subpath proxy: form action and version fetch use relative URLs
 - [x] Docker setup for both services
   - [x] `api/Dockerfile` — Go API container
   - [x] `web/Dockerfile` — PHP + Apache container
