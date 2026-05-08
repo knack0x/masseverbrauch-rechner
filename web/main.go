@@ -57,7 +57,7 @@ func Serve() {
 	mux.HandleFunc("/calculate", calculateHandler)
 	mux.HandleFunc("/api/version", versionHandler)
 
-	handler := cacheMiddleware(mux)
+	handler := loggingMiddleware(cacheMiddleware(mux))
 
 	port := os.Getenv("PORT")
 	if port == "" {
