@@ -1,10 +1,8 @@
 FROM golang:1.21-alpine AS builder
 WORKDIR /app
-COPY go.mod go.sum* ./
-COPY main.go .
 COPY web/ web/
 COPY VERSION .
-RUN go build -o web-server main.go
+RUN go build -o web-server ./web
 
 FROM alpine:latest
 WORKDIR /app

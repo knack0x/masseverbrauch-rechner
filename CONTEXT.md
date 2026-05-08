@@ -9,10 +9,12 @@ Rebuild of the existing static app at https://knack0x.github.io/masseverbrauch-r
 
 ```
 masseverbrauch-rechner/
-├── main.go              # Go web server (entry point)
-├── go.mod               # Go module (root)
-├── web/                 # Go web package (handlers, templates, assets)
-│   ├── web.go           # Handlers, API proxy, template funcs
+├── web/                 # Go web server (package main, has its own go.mod)
+│   ├── main.go          # Entry point
+│   ├── server.go        # Serve(), asset embed, config
+│   ├── handlers.go      # HTTP handlers + cache middleware
+│   ├── types.go         # Shared types
+│   ├── templates.go     # Template init + custom functions
 │   ├── templates/
 │   │   ├── index.html       # Main page (Go html/template)
 │   │   └── calculate.html   # Result dialog (Go html/template)
@@ -93,9 +95,13 @@ masseverbrauch-rechner/
 - [x] Created `CONTEXT.md`
 - [x] Created `AGENTS.md` with context file maintenance instructions
 - [x] Created Go API (`api/` dir) with `/api/calculate` endpoint
+- [x] Both services (`api/`, `web/`) have independent go.mod files
 - [x] Converted PHP frontend to Go html/templates:
-  - [x] `main.go` — entry point, starts web server
-  - [x] `web/web.go` — handlers, API proxy, template functions, static file serving
+  - [x] `web/main.go` — entry point (`func main() { Serve() }`)
+  - [x] `web/server.go` — `Serve()`, asset embed, config
+  - [x] `web/handlers.go` — all HTTP handlers + cache middleware
+  - [x] `web/types.go` — shared type definitions
+  - [x] `web/templates.go` — template init, embed, custom functions
   - [x] `web/templates/index.html` — main page (Go template with range loop, version display)
   - [x] `web/templates/calculate.html` — result dialog (Go template with German formatting)
   - [x] German number formatting (comma decimal, dot thousands separator)
@@ -138,7 +144,6 @@ masseverbrauch-rechner/
 
 ## What's Left
 
-- [x] Create `web/Dockerfile` — Go multi-stage build (alpine, port 80, PORT env)
 - [ ] Test complete Go stack (API + Web server)
 
 ## Reference

@@ -10,7 +10,7 @@ help:
 	@echo ""
 	@echo "  build       - Build all Docker images"
 	@echo "  build-api   - Build Go API binary"
-	@echo "  build-web   - Build PHP Docker image"
+	@echo "  build-web   - Build Go web Docker image"
 	@echo "  up          - Start all services with docker-compose"
 	@echo "  down        - Stop all services"
 	@echo "  test        - Test the API endpoint"
@@ -19,7 +19,7 @@ help:
 	@echo "  clean       - Remove containers and images"
 	@echo "  deploy      - Deploy to Mac Studio"
 	@echo "  dev-api     - Run Go API locally (without Docker)"
-	@echo "  dev-web     - Run PHP web locally (without Docker)"
+	@echo "  dev-web     - Run Go web locally (without Docker)"
 	@echo ""
 
 build: build-api build-web
@@ -29,7 +29,7 @@ build-api:
 	docker build -t masseverbrauch-api -f $(API_DIR)/Dockerfile .
 
 build-web:
-	@echo "Building PHP Web..."
+	@echo "Building Go Web..."
 	docker build --no-cache -t masseverbrauch-web -f $(WEB_DIR)/Dockerfile .
 
 up:
@@ -87,7 +87,7 @@ dev-api:
 # For local Go web development (without Docker)
 dev-web:
 	@echo "Running Go web server locally..."
-	API_URL=http://localhost:8080/api/calculate go run .
+	cd $(WEB_DIR) && API_URL=http://localhost:8080/api/calculate go run .
 
 # Quick restart
 restart: down up

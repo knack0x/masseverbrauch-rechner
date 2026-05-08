@@ -1,144 +1,16 @@
-package web
+package main
 
 import (
 	"bytes"
-	"embed"
 	"encoding/json"
 	"fmt"
-	"html/template"
 	"io"
-	"io/fs"
 	"log"
 	"net/http"
 	"os"
 	"strconv"
 	"strings"
 )
-
-//go:embed assets
-var assets embed.FS
-
-//go:embed templates
-var templateFiles embed.FS
-
-var webVersion string
-
-func init() {
-	if data, err := os.ReadFile("VERSION"); err == nil {
-		webVersion = strings.TrimSpace(string(data))
-	} else {
-		webVersion = "dev"
-	}
-}
-
-func apiBaseURL() string {
-	u := os.Getenv("API_URL")
-	if u == "" {
-		u = "http://localhost:8080/api/calculate"
-	}
-	return strings.TrimSuffix(u, "/api/calculate")
-}
-
-type IndexData struct {
-	WebVersion string
-	Slots      []int
-}
-
-type CalculateResultView struct {
-	HauptmasseKG     string
-	HauptmassePercent string
-	Slots            []SlotResultView
-	TotalKG          string
-}
-
-type SlotResultView struct {
-	Name    string
-	KG      string
-	Percent string
-}
-
-type CalculateRequest struct {
-	Flow           float64 `json:"flow"`
-	RuntimeMinutes float64 `json:"runtime_minutes"`
-	Slots          []Slot  `json:"slots"`
-}
-
-type Slot struct {
-	Before float64 `json:"before"`
-	After  float64 `json:"after"`
-}
-
-type CalculateResponse struct {
-	HauptmasseKG      float64      `json:"hauptmasse_kg"`
-	HauptmassePercent float64      `json:"hauptmasse_percent"`
-	Slots             []SlotResult `json:"slots"`
-	TotalKG           float64      `json:"total_kg"`
-}
-
-type SlotResult struct {
-	Name    string  `json:"name"`
-	KG      float64 `json:"kg"`
-	Percent float64 `json:"percent"`
-}
-
-func tmplSlots(n int) []int {
-	s := make([]int, n)
-	for i := range s {
-		s[i] = i + 1
-	}
-	return s
-}
-
-func tmplSub(a, b int) int {
-	return a - b
-}
-
-func tmplNumberFormat(v float64, decimals int) string {
-	format := fmt.Sprintf("%%.%df", decimals)
-	s := fmt.Sprintf(format, v)
-	parts := strings.Split(s, ".")
-	intPart := parts[0]
-	var result []byte
-	for i, c := range intPart {
-		if i > 0 && (len(intPart)-i)%3 == 0 {
-			result = append(result, '.')
-		}
-		result = append(result, byte(c))
-	}
-	if len(parts) > 1 {
-		result = append(result, ',')
-		result = append(result, parts[1]...)
-	}
-	return string(result)
-}
-
-func tmplTrSlotName(name string) string {
-	tr := map[string]string{
-		"Tower Slot 1": "Turmposition 1",
-		"Tower Slot 2": "Turmposition 2",
-		"Tower Slot 3": "Turmposition 3",
-		"Tower Slot 4": "Turmposition 4",
-		"Tower Slot 5": "Turmposition 5",
-	}
-	if v, ok := tr[name]; ok {
-		return v
-	}
-	return name
-}
-
-var tmpls *template.Template
-
-func initTemplates() error {
-	funcMap := template.FuncMap{
-		"slots":        tmplSlots,
-		"sub":          tmplSub,
-		"numberFormat": tmplNumberFormat,
-		"trSlotName":   tmplTrSlotName,
-	}
-	var err error
-	tmpls, err = template.New("").Funcs(funcMap).ParseFS(templateFiles, "templates/*.html")
-	return err
-}
 
 func cacheMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -264,40 +136,4 @@ func versionHandler(w http.ResponseWriter, r *http.Request) {
 	defer resp.Body.Close()
 	w.Header().Set("Content-Type", "application/json")
 	io.Copy(w, resp.Body)
-}
-
-func Serve() {
-	if err := initTemplates(); err != nil {
-		log.Fatalf("Failed to parse templates: %v", err)
-	}
-
-	assetsFS, err := fs.Sub(assets, "assets")
-	if err != nil {
-		log.Fatalf("Failed to get assets sub FS: %v", err)
-	}
-
-	mux := http.NewServeMux()
-	mux.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.FS(assetsFS))))
-	mux.HandleFunc("/manifest.json", func(w http.ResponseWriter, r *http.Request) {
-		data, err := assets.ReadFile("assets/manifest.json")
-		if err != nil {
-			http.NotFound(w, r)
-			return
-		}
-		w.Header().Set("Content-Type", "application/json")
-		w.Write(data)
-	})
-	mux.HandleFunc("/", indexHandler)
-	mux.HandleFunc("/calculate", calculateHandler)
-	mux.HandleFunc("/api/version", versionHandler)
-
-	handler := cacheMiddleware(mux)
-
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8081"
-	}
-
-	log.Printf("Web server starting on :%s (version: %s)", port, webVersion)
-	log.Fatal(http.ListenAndServe(":"+port, handler))
 }
