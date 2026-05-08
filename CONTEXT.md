@@ -29,7 +29,7 @@ masseverbrauch-rechner/
 │   └── Dockerfile
 ├── Makefile             # Build and deploy commands
 ├── docker-compose.yml   # Docker orchestration
-├── VERSION              # Version file (1.1.0)
+├── VERSION              # Version file
 ├── CHANGELOG.md         # Version history
 ├── AGENTS.md
 ├── CONTEXT.md
