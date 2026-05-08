@@ -1,12 +1,15 @@
-FROM php:8.2-apache
+FROM golang:1.21-alpine AS builder
+WORKDIR /app
+COPY go.mod go.sum* ./
+COPY main.go .
+COPY web/ web/
+COPY VERSION .
+RUN go build -o web-server main.go
 
-RUN apt-get update && apt-get install -y \
-    libcurl4-openssl-dev \
-    && docker-php-ext-install curl
-
-RUN a2enmod rewrite
-
-COPY web/ /var/www/html/
-COPY VERSION /var/www/html/VERSION
-
+FROM alpine:latest
+WORKDIR /app
+COPY --from=builder /app/web-server .
+COPY --from=builder /app/VERSION .
 EXPOSE 80
+ENV PORT=80
+CMD ["./web-server"]

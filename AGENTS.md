@@ -44,11 +44,17 @@ Always use `/Users/knackwurstking/Git/knack0x/masseverbrauch-rechner` as the wor
 
 ```
 masseverbrauch-rechner/
-├── web/                 # PHP frontend (HTMX + SSR)
-│   ├── index.php
-│   ├── calculate.php
-│   ├── version.php
-│   ├── cache.php
+├── main.go              # Go web server entry point
+├── go.mod
+├── web/                 # Go web package
+│   ├── web.go
+│   ├── templates/
+│   │   ├── index.html
+│   │   └── calculate.html
+│   ├── assets/
+│   │   ├── manifest.json
+│   │   ├── favicon.ico
+│   │   └── icons/
 │   └── Dockerfile
 ├── api/                 # Go API (stdlib)
 │   ├── main.go

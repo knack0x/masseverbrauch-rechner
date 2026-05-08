@@ -1,17 +1,23 @@
 # Masseverbrauch-Rechner
 
 A web application to calculate mass consumption in the press department of tile production.
-Rebuild of the existing static app with PHP + Go API architecture.
+Rebuild of the existing static app with Go + HTMX architecture.
 
 ## Project Structure
 
 ```
 masseverbrauch-rechner/
-├── web/                 # PHP frontend (HTMX + SSR)
-│   ├── index.php
-│   ├── calculate.php
-│   ├── version.php
-│   ├── cache.php
+├── main.go              # Go web server (entry point)
+├── go.mod
+├── web/                 # Go web package (handlers, templates, assets)
+│   ├── web.go
+│   ├── templates/
+│   │   ├── index.html
+│   │   └── calculate.html
+│   ├── assets/
+│   │   ├── manifest.json
+│   │   ├── favicon.ico
+│   │   └── icons/
 │   └── Dockerfile
 ├── api/                 # Go API (stdlib)
 │   ├── main.go
@@ -32,7 +38,6 @@ masseverbrauch-rechner/
 - Docker & Docker Compose
 - GNU Make
 - Go 1.21+ (for local dev)
-- PHP 8.2+ (for local dev)
 
 ### Build & Run
 
@@ -53,7 +58,7 @@ make up
 # Start Go API locally (port 8080)
 make dev-api
 
-# Start PHP web locally (port 50571)
+# Start Go web server locally (port 8081)
 make dev-web
 ```
 
@@ -66,7 +71,7 @@ The web frontend uses `API_URL` environment variable to connect to the API. In D
 | `make help` | Show available commands |
 | `make build` | Build all Docker images (API + Web) |
 | `make build-api` | Build Go API binary |
-| `make build-web` | Build PHP Docker image |
+| `make build-web` | Build Go web Docker image |
 | `make up` | Start all services with docker-compose |
 | `make down` | Stop all services |
 | `make test` | Test the API endpoint |
@@ -75,7 +80,7 @@ The web frontend uses `API_URL` environment variable to connect to the API. In D
 | `make clean` | Remove containers and images |
 | `make deploy` | Deploy to Mac Studio (requires DEPLOY_HOST) |
 | `make dev-api` | Run Go API locally without Docker |
-| `make dev-web` | Run PHP web locally without Docker |
+| `make dev-web` | Run Go web server locally without Docker |
 | `make restart` | Restart all services |
 
 ### Deploy to Mac Studio
@@ -113,8 +118,9 @@ Response:
 
 ## Tech Stack
 
-- **Frontend**: PHP 8.2 + HTMX + HTML/CSS (mobile-first)
+- **Frontend**: Go html/templates + HTMX + HTML/CSS (mobile-first)
 - **Backend API**: Go 1.21 (standard library)
+- **Web Server**: Go http.ServeMux (proxies to API)
 - **Deployment**: Docker + Docker Compose
 
 ## Version

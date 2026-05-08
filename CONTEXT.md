@@ -20,7 +20,7 @@ masseverbrauch-rechner/
 │   │   ├── manifest.json    # PWA manifest
 │   │   ├── favicon.ico
 │   │   └── icons/           # PWA icons (48-1000px)
-│   └── Dockerfile       # TODO: update from PHP to Go
+ │   └── Dockerfile       # TODO: create Go multi-stage build
 ├── api/                 # Go API (stdlib)
 │   ├── main.go
 │   ├── go.mod
@@ -138,10 +138,8 @@ masseverbrauch-rechner/
 
 ## What's Left
 
-- [ ] Update `web/Dockerfile` from PHP to Go multi-stage build
-- [ ] Update `docker-compose.yml` to use new Go web Dockerfile
+- [x] Create `web/Dockerfile` — Go multi-stage build (alpine, port 80, PORT env)
 - [ ] Test complete Go stack (API + Web server)
-- [ ] Clean up old PHP files once migration is verified
 
 ## Reference
 
