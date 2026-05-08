@@ -212,6 +212,35 @@
 				.then(r => r.json())
 				.then(d => document.getElementById('api-version').textContent = d.version)
 				.catch(() => document.getElementById('api-version').textContent = 'n/a');
+
+			var form = document.querySelector('form');
+			var inputs = form.querySelectorAll('input[name]');
+
+			function serialize() {
+				var params = new URLSearchParams();
+				inputs.forEach(function(el) {
+					if (el.value) params.set(el.name, el.value);
+				});
+				return params;
+			}
+
+			function restore() {
+				var params = new URLSearchParams(location.search);
+				inputs.forEach(function(el) {
+					var val = params.get(el.name);
+					if (val) el.value = val;
+				});
+			}
+
+			function push() {
+				var params = serialize();
+				var qs = params.toString();
+				var url = location.pathname + (qs ? '?' + qs : '');
+				history.replaceState(null, '', url);
+			}
+
+			form.addEventListener('input', push);
+			restore();
 		})();
 	</script>
 </body>
