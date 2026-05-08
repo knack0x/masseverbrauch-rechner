@@ -97,17 +97,18 @@ masseverbrauch-rechner/
 - [x] Created Go API (`api/` dir) with `/api/calculate` endpoint
 - [x] Both services (`api/`, `web/`) have independent go.mod files
 - [x] Converted PHP frontend to Go html/templates:
-  - [x] `web/main.go` — entry point (`func main() { Serve() }`)
-  - [x] `web/server.go` — `Serve()`, asset embed, config
+  - [x] `web/main.go` — entry point, `Serve()`, asset embed, config
   - [x] `web/handlers.go` — all HTTP handlers + cache middleware
   - [x] `web/types.go` — shared type definitions
   - [x] `web/templates.go` — template init, embed, custom functions
-  - [x] `web/templates/index.html` — main page (Go template with range loop, version display)
+  - [x] `web/templates/index.html` — main page (Go template with range loop, version display, URL query param sync)
   - [x] `web/templates/calculate.html` — result dialog (Go template with German formatting)
   - [x] German number formatting (comma decimal, dot thousands separator)
   - [x] German translation for slot names (Turmposition 1-5)
   - [x] `manifest.json` moved to `web/assets/manifest.json`
   - [x] HTMX integration, version proxy, static assets serving
+  - [x] Form inputs sync to URL query params via `history.replaceState` for reload persistence
+  - [x] Fixed slot index bug: send all 5 slots to API instead of skipping empty ones
 - [x] Docker setup for both services
   - [x] `api/Dockerfile` — Go API container
   - [x] `web/Dockerfile` — PHP + Apache container
