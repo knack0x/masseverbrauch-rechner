@@ -10,12 +10,19 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func loggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		log.Printf("%s %s %s", r.Method, r.URL.Path, r.RemoteAddr)
+		start := time.Now()
+		ip := r.Header.Get("X-Forwarded-For")
+		if ip == "" {
+			ip = r.RemoteAddr
+		}
 		next.ServeHTTP(w, r)
+		log.Printf("%s %s %s %s %s",
+			r.Method, r.URL.Path, ip, r.UserAgent(), time.Since(start).Round(time.Millisecond))
 	})
 }
 
