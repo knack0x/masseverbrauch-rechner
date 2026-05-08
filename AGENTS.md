@@ -46,7 +46,6 @@ Always use `/Users/knackwurstking/Git/knack0x/masseverbrauch-rechner` as the wor
 masseverbrauch-rechner/
 ├── web/                 # Go web server (package main, has its own go.mod)
 │   ├── main.go
-│   ├── server.go
 │   ├── handlers.go
 │   ├── types.go
 │   ├── templates.go

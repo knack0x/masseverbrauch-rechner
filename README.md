@@ -8,8 +8,7 @@ Rebuild of the existing static app with Go + HTMX architecture.
 ```
 masseverbrauch-rechner/
 ├── web/                 # Go web server (go.mod + main package + handlers + templates)
-│   ├── main.go          # Entry point
-│   ├── server.go        # Serve(), asset embed, config
+│   ├── main.go          # Entry point, Serve(), asset embed, config
 │   ├── handlers.go      # HTTP handlers + cache middleware
 │   ├── types.go         # Shared types
 │   ├── templates.go     # Template init + custom functions
