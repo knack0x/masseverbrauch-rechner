@@ -162,7 +162,7 @@
 			(API: <span id="api-version">...</span>)
 		</div>
 
-		<form hx-post="/calculate"
+		<form hx-post="calculate"
 			hx-target="#results"
 			hx-swap="innerHTML">
 			<h2>Hauptmasse</h2>
@@ -208,7 +208,7 @@
 
 	<script>
 		(function() {
-			fetch('/api/version')
+			fetch('api/version')
 				.then(r => r.json())
 				.then(d => document.getElementById('api-version').textContent = d.version)
 				.catch(() => document.getElementById('api-version').textContent = 'n/a');
