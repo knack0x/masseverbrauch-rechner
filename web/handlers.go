@@ -57,13 +57,8 @@ func calculateHandler(w http.ResponseWriter, r *http.Request) {
 
 	var slots []Slot
 	for i := 0; i < 5; i++ {
-		beforeStr := r.FormValue(fmt.Sprintf("slots[%d][before]", i))
-		afterStr := r.FormValue(fmt.Sprintf("slots[%d][after]", i))
-		if beforeStr == "" && afterStr == "" {
-			continue
-		}
-		before, _ := strconv.ParseFloat(beforeStr, 64)
-		after, _ := strconv.ParseFloat(afterStr, 64)
+		before, _ := strconv.ParseFloat(r.FormValue(fmt.Sprintf("slots[%d][before]", i)), 64)
+		after, _ := strconv.ParseFloat(r.FormValue(fmt.Sprintf("slots[%d][after]", i)), 64)
 		slots = append(slots, Slot{Before: before, After: after})
 	}
 
