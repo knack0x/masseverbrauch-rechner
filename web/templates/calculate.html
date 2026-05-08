@@ -1,0 +1,34 @@
+<dialog id="results-dialog">
+	<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+		<h2 style="margin: 0;">Verbrauch</h2>
+	</div>
+
+	<div class="result-row">
+		<strong>Hauptmasse</strong>
+	</div>
+	<div class="result-row">
+		<span>{{.HauptmasseKG}} kg</span>
+		<span>{{.HauptmassePercent}}%</span>
+	</div>
+
+	<div class="result-row" style="margin-top: 1rem;">
+		<strong>Zusatzmasse</strong>
+	</div>
+
+	{{range .Slots}}
+	<div class="result-row">
+		<span>{{.Name}}</span>
+		<span>{{.KG}} kg ({{.Percent}}%)</span>
+	</div>
+	{{end}}
+
+	<div class="result-row" style="margin-top: 1rem; border-top: 2px solid #333; padding-top: 0.5rem;">
+		<strong>Gesamt: {{.TotalKG}} kg</strong>
+	</div>
+
+	<button class="close-btn" onclick="this.closest('dialog').close()">Schließen</button>
+</dialog>
+
+<script>
+	document.getElementById('results-dialog').showModal();
+</script>

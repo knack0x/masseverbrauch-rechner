@@ -9,15 +9,18 @@ Rebuild of the existing static app at https://knack0x.github.io/masseverbrauch-r
 
 ```
 masseverbrauch-rechner/
-├── web/                 # PHP frontend (HTMX + SSR)
-│   ├── index.php
-│   ├── calculate.php
-│   ├── version.php
-│   ├── cache.php
-│   ├── manifest.json
-│   ├── Dockerfile
-│   └── assets/
-│       └── icons/      # PWA icons (48-1000px)
+├── main.go              # Go web server (entry point)
+├── go.mod               # Go module (root)
+├── web/                 # Go web package (handlers, templates, assets)
+│   ├── web.go           # Handlers, API proxy, template funcs
+│   ├── templates/
+│   │   ├── index.html       # Main page (Go html/template)
+│   │   └── calculate.html   # Result dialog (Go html/template)
+│   ├── assets/
+│   │   ├── manifest.json    # PWA manifest
+│   │   ├── favicon.ico
+│   │   └── icons/           # PWA icons (48-1000px)
+│   └── Dockerfile       # TODO: update from PHP to Go
 ├── api/                 # Go API (stdlib)
 │   ├── main.go
 │   ├── go.mod
@@ -33,8 +36,9 @@ masseverbrauch-rechner/
 
 ## Tech Stack
 
-- **Frontend**: Plain PHP, HTMX, HTML/CSS (mobile-first, improved from existing app)
+- **Frontend**: Go html/templates, HTMX, HTML/CSS (mobile-first)
 - **Backend API**: Go with standard library only
+- **Web Server**: Go http.ServeMux (proxies to Go API)
 - **JavaScript**: Minimal
 - **Deployment**: Docker on Mac Studio → https://knackwurstking.com/masseverbrauch-rechner/
 
@@ -89,12 +93,15 @@ masseverbrauch-rechner/
 - [x] Created `CONTEXT.md`
 - [x] Created `AGENTS.md` with context file maintenance instructions
 - [x] Created Go API (`api/` dir) with `/api/calculate` endpoint
-- [x] Created PHP frontend (`web/` dir) with:
-  - [x] `index.php` — main page with form (mobile-first styling)
-  - [x] HTMX integration to call Go API via PHP proxy
-  - [x] Results display (dialog/modal, centered on screen)
-  - [x] `calculate.php` — PHP proxy to Go API
-  - [x] German translations for slot names (Turmposition 1-5)
+- [x] Converted PHP frontend to Go html/templates:
+  - [x] `main.go` — entry point, starts web server
+  - [x] `web/web.go` — handlers, API proxy, template functions, static file serving
+  - [x] `web/templates/index.html` — main page (Go template with range loop, version display)
+  - [x] `web/templates/calculate.html` — result dialog (Go template with German formatting)
+  - [x] German number formatting (comma decimal, dot thousands separator)
+  - [x] German translation for slot names (Turmposition 1-5)
+  - [x] `manifest.json` moved to `web/assets/manifest.json`
+  - [x] HTMX integration, version proxy, static assets serving
 - [x] Docker setup for both services
   - [x] `api/Dockerfile` — Go API container
   - [x] `web/Dockerfile` — PHP + Apache container
@@ -131,8 +138,10 @@ masseverbrauch-rechner/
 
 ## What's Left
 
-- [x] Test the complete setup (Go API + PHP frontend) - Verified working 2026-05-02
-- [x] Deploy to Mac Studio
+- [ ] Update `web/Dockerfile` from PHP to Go multi-stage build
+- [ ] Update `docker-compose.yml` to use new Go web Dockerfile
+- [ ] Test complete Go stack (API + Web server)
+- [ ] Clean up old PHP files once migration is verified
 
 ## Reference
 

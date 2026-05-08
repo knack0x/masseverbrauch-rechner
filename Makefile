@@ -84,10 +84,10 @@ dev-api:
 	@echo "Running API locally..."
 	cd $(API_DIR) && go run main.go
 
-# For local PHP development (without Docker)
+# For local Go web development (without Docker)
 dev-web:
-	@echo "Running PHP web locally..."
-	cd $(WEB_DIR) && API_URL=http://localhost:8080/api/calculate php -S localhost:50571
+	@echo "Running Go web server locally..."
+	API_URL=http://localhost:8080/api/calculate go run .
 
 # Quick restart
 restart: down up
