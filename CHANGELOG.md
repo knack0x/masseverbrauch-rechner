@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.0] - 2026-05-11
+
+### Added
+- Request logging middleware with method, path, client IP, duration, and User-Agent
+- Structured log prefixes (`[req]`, `[info]`, `[warn]`, `[error]`, `[debug]`, `[fatal]`) for easy grepping
+- Logging conventions documented in AGENTS.md
+
+### Fixed
+- All URLs now use relative paths for correct resolution behind nginx subpath proxy (`/masseverbrauch-rechner/`)
+
+### Changed
+- Bumped version to 2.1.0
+
 ## [2.0.0] - 2026-05-08
 
 ### Changed
