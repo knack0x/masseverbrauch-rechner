@@ -50,6 +50,24 @@ The app is deployed behind an nginx reverse proxy at `https://knackwurstking.com
 ✅ `fetch('api/version')` — resolves correctly regardless of base path
 ❌ `fetch('/api/version')` — breaks behind proxy
 
+## Logging Conventions
+
+All server log messages MUST use a bracketed prefix indicating the level or middleware type:
+
+| Prefix | When to use |
+|--------|-------------|
+| `[req]` | Request logging middleware |
+| `[info]` | Server startup, operational info |
+| `[warn]` | Recoverable issues, unexpected states |
+| `[error]` | Runtime errors (API failure, template exec, decode failure) |
+| `[debug]` | Detailed debug output (not currently used) |
+| `[fatal]` | Unrecoverable errors that exit the process |
+
+Examples:
+- `log.Printf("[info] Server starting on :%s", port)`
+- `log.Printf("[error] api: %v", err)`
+- `log.Fatalf("[fatal] Failed to parse templates: %v", err)`
+
 ## Project Structure
 
 ```

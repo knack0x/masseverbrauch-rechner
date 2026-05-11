@@ -143,6 +143,7 @@ masseverbrauch-rechner/
 - [x] Added PWA icon images (48x48 to 1000x1000) to web/assets/icons/
 - [x] Created manifest.json for PWA installation
 - [x] Updated index.php with PWA meta tags, apple-touch-icon, and manifest link
+- [x] Added structured log prefixes (`[req]`, `[info]`, `[warn]`, `[error]`, `[debug]`, `[fatal]`) to all web server logs
 
 ## What's Left
 

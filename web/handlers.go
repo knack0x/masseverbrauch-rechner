@@ -21,8 +21,8 @@ func loggingMiddleware(next http.Handler) http.Handler {
 			ip = r.RemoteAddr
 		}
 		next.ServeHTTP(w, r)
-		log.Printf("%s %s %s %s %s",
-			r.Method, r.URL.Path, ip, r.UserAgent(), time.Since(start).Round(time.Millisecond))
+		log.Printf("[req] %s %s %s  %s, %s",
+			r.Method, r.URL.Path, ip, time.Since(start).Round(time.Millisecond), r.UserAgent())
 	})
 }
 
@@ -47,7 +47,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	var buf bytes.Buffer
 	if err := tmpls.ExecuteTemplate(&buf, "index.html", data); err != nil {
-		log.Printf("Template error: %v", err)
+		log.Printf("[error] template: %v", err)
 		http.Error(w, "Internal error", http.StatusInternalServerError)
 		return
 	}
@@ -90,7 +90,7 @@ func calculateHandler(w http.ResponseWriter, r *http.Request) {
 	body, _ := json.Marshal(req)
 	resp, err := http.Post(apiURL, "application/json", bytes.NewReader(body))
 	if err != nil {
-		log.Printf("API call failed: %v", err)
+		log.Printf("[error] api: %v", err)
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		fmt.Fprint(w, `<div style="color: red; padding: 1rem;">Fehler bei der Berechnung: API nicht erreichbar</div>`)
 		return
@@ -106,7 +106,7 @@ func calculateHandler(w http.ResponseWriter, r *http.Request) {
 
 	var apiResult CalculateResponse
 	if err := json.NewDecoder(resp.Body).Decode(&apiResult); err != nil {
-		log.Printf("API response decode failed: %v", err)
+		log.Printf("[error] api decode: %v", err)
 		http.Error(w, "Internal error", http.StatusInternalServerError)
 		return
 	}
@@ -126,7 +126,7 @@ func calculateHandler(w http.ResponseWriter, r *http.Request) {
 
 	var buf bytes.Buffer
 	if err := tmpls.ExecuteTemplate(&buf, "calculate.html", view); err != nil {
-		log.Printf("Template error: %v", err)
+		log.Printf("[error] template: %v", err)
 		http.Error(w, "Internal error", http.StatusInternalServerError)
 		return
 	}

@@ -34,12 +34,12 @@ func apiBaseURL() string {
 
 func Serve() {
 	if err := initTemplates(); err != nil {
-		log.Fatalf("Failed to parse templates: %v", err)
+		log.Fatalf("[fatal] Failed to parse templates: %v", err)
 	}
 
 	assetsFS, err := fs.Sub(assets, "assets")
 	if err != nil {
-		log.Fatalf("Failed to get assets sub FS: %v", err)
+		log.Fatalf("[fatal] Failed to get assets sub FS: %v", err)
 	}
 
 	mux := http.NewServeMux()
@@ -64,8 +64,8 @@ func Serve() {
 		port = "8081"
 	}
 
-	log.Printf("Web server starting on :%s (version: %s)", port, webVersion)
-	log.Fatal(http.ListenAndServe(":"+port, handler))
+	log.Printf("[info] Server starting on :%s (version: %s)", port, webVersion)
+	log.Fatalf("[fatal] %v", http.ListenAndServe(":"+port, handler))
 }
 
 func main() {
