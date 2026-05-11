@@ -146,7 +146,7 @@ masseverbrauch-rechner/
 
 ## What's Left
 
-- [ ] Test complete Go stack (API + Web server)
+- [x] Test complete Go stack (API + Web server)
 
 ## Reference
 
